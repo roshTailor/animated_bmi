@@ -8,12 +8,19 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const spaceObjects(),
-      // initialRoute: 'splash screen',
-      // routes: {
-      //   'splash screen': (context) => const Splash(),
-      //   'home': (context) => const HomePage(),
-      // },
+      // home: const spaceObjects(),
+      initialRoute: 'splash screen',
+      theme: ThemeData(
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.android: ZoomPageTransitionsBuilder(),
+          },
+        ),
+      ),
+      routes: {
+        'splash screen': (context) => const Splash(),
+        'home': (context) => const HomePage(),
+      },
     ),
   );
 }
