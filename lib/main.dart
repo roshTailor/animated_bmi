@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'Screen/3dobject.dart';
 import 'Screen/homePage.dart';
 import 'Screen/splash.dart';
 

@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,43 +9,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  // late AnimationController animationController;
-  // Animation? sizeAnimation;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    // animationController = AnimationController(vsync: this, duration: const Duration(seconds: 5));
-    // sizeAnimation = Tween<double>(begin: 10, end: 50).animate(
-    //   CurvedAnimation(
-    //     parent: animationController!,
-    //     curve: Curves.easeIn,
-    //   ),
-    // );
-    // animationController!.addListener(() {
-    //   setState(() {});
-    // });
-    // animationController.forward();
-    super.initState();
-  }
 
   double _height = 0, _weight = 0, meter = 0;
-  double BMI = 0;
+  double bmi = 0;
   int female = 0, male = 0, select = 0, age = 2;
   String category = "";
 
   @override
   Widget build(BuildContext context) {
-    timeDilation = 5;
     double hght = MediaQuery.of(context).size.height;
     double wdth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "BMI Calculator",
         ),
-        backgroundColor: Color(0xFF851C51),
+        backgroundColor: const Color(0xFF851C51),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -64,9 +43,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           child: ListView(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  FadeInLeft(
+                  ZoomIn(
                     child: InkWell(
                       borderRadius: BorderRadius.circular(5),
                       onTap: () {
@@ -78,17 +56,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         height: hght / 5,
                         width: wdth / 2.3,
                         decoration: BoxDecoration(
-                          color: select == 1 ? const Color(0xff3B3C4C) : Color(0xff1D1E33),
+                          color: select == 1
+                              ? const Color(0xff3B3C4C)
+                              : const Color(0xff1D1E33),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Column(
                           children: [
                             Icon(
                               Icons.female,
-                              color: select == 1 ? Color(0xffEB1555) : Colors.white,
-                              size: 120,
+                              color: select == 1
+                                  ? const Color(0xffEB1555)
+                                  : Colors.white,
+                              size: 100,
                             ),
-                            Text(
+                            const Text(
                               "Female",
                               style: TextStyle(
                                 fontSize: 20,
@@ -100,7 +82,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  FadeInRight(
+                  const Spacer(),
+                  ZoomIn(
                     child: InkWell(
                       borderRadius: BorderRadius.circular(5),
                       onTap: () {
@@ -112,17 +95,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         height: hght / 5,
                         width: wdth / 2.3,
                         decoration: BoxDecoration(
-                          color: select == 2 ? const Color(0xff3B3C4C) : Color(0xff1D1E33),
+                          color: select == 2
+                              ? const Color(0xff3B3C4C)
+                              : const Color(0xff1D1E33),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Column(
                           children: [
                             Icon(
                               Icons.male,
-                              color: select == 2 ? Color(0xffEB1555) : Colors.white,
-                              size: 120,
+                              color: select == 2
+                                  ? Color(0xffEB1555)
+                                  : Colors.white,
+                              size: 100,
                             ),
-                            Text(
+                            const Text(
                               "Male",
                               style: TextStyle(
                                 fontSize: 20,
@@ -137,9 +124,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ],
               ),
               SizedBox(
-                height: hght / 30,
+                height: hght / 40,
               ),
-              FadeIn(
+              ZoomIn(
                 child: Container(
                   height: hght / 6,
                   width: wdth / 0.9,
@@ -170,7 +157,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 fontSize: 50,
                               ),
                             ),
-                            Text(
+                            const Text(
                               "cm",
                               style: TextStyle(
                                 fontSize: 15,
@@ -182,8 +169,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         SliderTheme(
                           data: const SliderThemeData(
                             trackHeight: 1,
-                            overlayShape: RoundSliderOverlayShape(overlayRadius: 9),
-                            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8),
+                            overlayShape:
+                                RoundSliderOverlayShape(overlayRadius: 9),
+                            thumbShape:
+                                RoundSliderThumbShape(enabledThumbRadius: 8),
                             thumbColor: Color(0xffEB1555),
                             inactiveTrackColor: Color(0xff555555),
                             activeTrackColor: Color(0xffF5C1D1),
@@ -204,34 +193,34 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: hght / 40,
               ),
-              Expanded(
-                flex: 2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: hght / 4,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ZoomIn(
+                    
+                    child: Container(
+                      height: hght / 4.5,
                       width: wdth / 2.3,
                       decoration: BoxDecoration(
-                        color: Color(0xff1D1E33),
+                        color: const Color(0xff1D1E33),
                         borderRadius: BorderRadius.circular(7),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text(
+                          const Text(
                             "Weight",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 20,
                               color: Color(0xffFFFFFF),
                             ),
                           ),
                           Text(
                             "${_weight.toInt()}",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 40,
                               color: Color(0xffFFFFFF),
                             ),
@@ -253,16 +242,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   height: 50,
                                   width: 50,
                                   alignment: Alignment.center,
-                                  child: Text(
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xff4C4F5E),
+                                  ),
+                                  child:const Text(
                                     "-",
                                     style: TextStyle(
                                       fontSize: 30,
                                       color: Color(0xff626473),
                                     ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Color(0xff4C4F5E),
                                   ),
                                 ),
                               ),
@@ -276,16 +265,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   height: 50,
                                   width: 50,
                                   alignment: Alignment.center,
-                                  child: Text(
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xff4C4F5E),
+                                  ),
+                                  child: const Text(
                                     "+",
                                     style: TextStyle(
                                       fontSize: 30,
                                       color: Color(0xff6E6F7A),
                                     ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Color(0xff4C4F5E),
                                   ),
                                 ),
                               )
@@ -294,26 +283,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
-                    Container(
-                      height: hght / 4,
+                  ),
+                  ZoomIn(
+                    child: Container(
+                      height: hght / 4.5,
                       width: wdth / 2.3,
                       decoration: BoxDecoration(
-                        color: Color(0xff1D1E33),
+                        color: const Color(0xff1D1E33),
                         borderRadius: BorderRadius.circular(7),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text(
+                          const Text(
                             "Age",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 20,
                               color: Color(0xffFFFFFF),
                             ),
                           ),
                           Text(
                             "$age",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 40,
                               color: Color(0xffFFFFFF),
                             ),
@@ -335,16 +326,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   height: 50,
                                   width: 50,
                                   alignment: Alignment.center,
-                                  child: Text(
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xff4C4F5E),
+                                  ),
+                                  child: const Text(
                                     "-",
                                     style: TextStyle(
                                       fontSize: 30,
                                       color: Color(0xff626473),
                                     ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Color(0xff4C4F5E),
                                   ),
                                 ),
                               ),
@@ -358,16 +349,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   height: 50,
                                   width: 50,
                                   alignment: Alignment.center,
-                                  child: Text(
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xff4C4F5E),
+                                  ),
+                                  child: const Text(
                                     "+",
                                     style: TextStyle(
                                       fontSize: 30,
                                       color: Color(0xff6E6F7A),
                                     ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Color(0xff4C4F5E),
                                   ),
                                 ),
                               )
@@ -376,17 +367,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,
               ),
-              Expanded(
-                flex: 1,
+              ZoomIn(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(0xff1D1E33),
+                    color: const Color(0xff1D1E33),
                     borderRadius: BorderRadius.circular(7),
                   ),
                   alignment: Alignment.center,
@@ -394,15 +384,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "${BMI.toStringAsFixed(2)}",
-                        style: TextStyle(
+                        bmi.toStringAsFixed(2),
+                        style: const TextStyle(
                           fontSize: 30,
                           color: Color(0xffFFFFFF),
                         ),
                       ),
                       Text(
-                        "$category",
-                        style: TextStyle(
+                        category,
+                        style: const TextStyle(
                           fontSize: 20,
                           color: Color(0xffFFFFFF),
                         ),
@@ -414,20 +404,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               const SizedBox(
                 height: 10,
               ),
-              Expanded(
-                flex: 1,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(40),
+              ZoomIn(
+                child:GestureDetector(
                   onTap: () {
                     setState(() {
                       if (select != 0 && age >= 2) {
                         meter = _height / 100;
-                        BMI = _weight / (meter * meter);
-                        if (BMI <= 18.5) {
+                        bmi = _weight / (meter * meter);
+                        if (bmi <= 18.5) {
                           category = "Underweight";
-                        } else if (BMI >= 18.5 && BMI <= 24.9) {
+                        } else if (bmi >= 18.5 && bmi <= 24.9) {
                           category = "Normal weight";
-                        } else if (BMI >= 25 && BMI <= 29.9) {
+                        } else if (bmi >= 25 && bmi <= 29.9) {
                           category = "Overweight";
                         } else {
                           category = "Obesity";
@@ -439,17 +427,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     height: 60,
                     //width: 200,
                     alignment: Alignment.center,
-                    child: Text(
+                    decoration: BoxDecoration(
+                      color: const Color(0xffEB1555),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Text(
                       "Calculate",
                       style: TextStyle(
                         color: Color(0xffFFFFFF),
                         fontSize: 30,
                         fontWeight: FontWeight.w700,
                       ),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color(0xffEB1555),
-                      borderRadius: BorderRadius.circular(40),
                     ),
                   ),
                 ),
@@ -458,21 +446,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
         ),
       ),
-
-      // body: Center(
-      //   child: AnimatedBuilder(
-      //     animation: animationController,
-      //     builder: (BuildContext context, Widget? child) {
-      //       return Hero(
-      //           tag: "tag",
-      //           child: Container(
-      //             height: sizeAnimation!.value,
-      //             width: sizeAnimation!.value,
-      //             color: Colors.cyanAccent,
-      //           ));
-      //     },
-      //   ),
-      // ),
     );
   }
 }
