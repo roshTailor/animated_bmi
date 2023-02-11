@@ -1,3 +1,4 @@
+![bmi](https://user-images.githubusercontent.com/120237924/218274973-ec48c284-69d4-463e-92fb-59f39fc54077.gif)
 # animated_bmi
 
 A new Flutter project.
